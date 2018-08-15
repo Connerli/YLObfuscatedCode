@@ -12,6 +12,7 @@
 		13262A892122A2DD00C7E663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13262A882122A2DD00C7E663 /* Assets.xcassets */; };
 		13262A8C2122A2DD00C7E663 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13262A8A2122A2DD00C7E663 /* Main.storyboard */; };
 		13262A8F2122A2DD00C7E663 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13262A8E2122A2DD00C7E663 /* main.m */; };
+		13262A982122D6EF00C7E663 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 13262A972122D6EF00C7E663 /* NSString+Category.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		13262A8D2122A2DD00C7E663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13262A8E2122A2DD00C7E663 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		13262A902122A2DD00C7E663 /* YLObfuscatedCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YLObfuscatedCode.entitlements; sourceTree = "<group>"; };
+		13262A962122D6EF00C7E663 /* NSString+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
+		13262A972122D6EF00C7E663 /* NSString+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 				13262A832122A2DC00C7E663 /* AppDelegate.m */,
 				13262A852122A2DC00C7E663 /* ViewController.h */,
 				13262A862122A2DC00C7E663 /* ViewController.m */,
+				13262A962122D6EF00C7E663 /* NSString+Category.h */,
+				13262A972122D6EF00C7E663 /* NSString+Category.m */,
 				13262A882122A2DD00C7E663 /* Assets.xcassets */,
 				13262A8A2122A2DD00C7E663 /* Main.storyboard */,
 				13262A8D2122A2DD00C7E663 /* Info.plist */,
@@ -142,6 +147,7 @@
 				13262A872122A2DC00C7E663 /* ViewController.m in Sources */,
 				13262A8F2122A2DD00C7E663 /* main.m in Sources */,
 				13262A842122A2DC00C7E663 /* AppDelegate.m in Sources */,
+				13262A982122D6EF00C7E663 /* NSString+Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
