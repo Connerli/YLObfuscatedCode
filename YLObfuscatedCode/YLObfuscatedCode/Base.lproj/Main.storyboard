@@ -735,7 +735,7 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-z9-G2M">
                                 <rect key="frame" x="149" y="231" width="301" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="XMd-pp-dbJ">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Project 路径" drawsBackground="YES" id="XMd-pp-dbJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -785,14 +785,14 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-NI-U5A">
                                 <rect key="frame" x="43" y="79" width="195" height="18"/>
-                                <buttonCell key="cell" type="check" title="删除代码中的所有注释和空行" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aHr-oJ-ePE">
+                                <buttonCell key="cell" type="check" title="删除代码中的所有注释和空行" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aHr-oJ-ePE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Le4-fr-MXW">
                                 <rect key="frame" x="43" y="113" width="115" height="18"/>
-                                <buttonCell key="cell" type="check" title="修改资源文件名" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FHz-B5-9O9">
+                                <buttonCell key="cell" type="check" title="修改资源文件名" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FHz-B5-9O9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -820,7 +820,7 @@
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="centerY" secondItem="soS-8R-ORP" secondAttribute="centerY" id="1ID-qf-R65"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="width" secondItem="w9N-ie-4P1" secondAttribute="width" id="2ec-p5-qiz"/>
                             <constraint firstItem="fxg-To-mLx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="45" id="5he-kI-gV1"/>
-                            <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" secondItem="w9N-ie-4P1" secondAttribute="trailing" constant="30" id="CYH-5R-ehb"/>
+                            <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w9N-ie-4P1" secondAttribute="trailing" symbolic="YES" id="CYH-5R-ehb"/>
                             <constraint firstItem="w9N-ie-4P1" firstAttribute="centerY" secondItem="0gq-na-bsU" secondAttribute="centerY" id="GCP-Rp-4EI"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0gq-na-bsU" secondAttribute="trailing" constant="20" symbolic="YES" id="HJM-hc-94a"/>
                             <constraint firstItem="T6r-z9-G2M" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="trailing" constant="50" id="I4w-Ae-Fyf"/>
@@ -840,6 +840,7 @@
                             <constraint firstItem="0gq-na-bsU" firstAttribute="top" secondItem="fxg-To-mLx" secondAttribute="bottom" constant="20" id="cKx-8i-On6"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Le4-fr-MXW" secondAttribute="trailing" constant="20" symbolic="YES" id="ciV-aP-w1T"/>
                             <constraint firstItem="w9N-ie-4P1" firstAttribute="leading" secondItem="T6r-z9-G2M" secondAttribute="leading" id="dcl-bv-7Sy"/>
+                            <constraint firstAttribute="trailing" secondItem="nDb-6d-9C7" secondAttribute="trailing" constant="101" id="i7L-oW-zjH"/>
                             <constraint firstAttribute="bottom" secondItem="8hX-eQ-ggr" secondAttribute="bottom" constant="30" id="iPo-2v-mey"/>
                             <constraint firstItem="0gq-na-bsU" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="j4s-uX-N6s"/>
                             <constraint firstItem="soS-8R-ORP" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="jT5-Gw-GU4"/>

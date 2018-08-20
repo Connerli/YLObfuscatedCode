@@ -8,6 +8,13 @@
 
 #import "ViewController.h"
 #import "NSString+Category.h"
+#include <stdlib.h>
+
+// 命令行修改工程目录下所有 png 资源 hash 值
+// 使用 ImageMagick 进行图片压缩，所以需要安装 ImageMagick，安装方法 brew install imagemagick
+// find . -iname "*.png" -exec echo {} \; -exec convert {} {} \;
+// or
+// find . -iname "*.png" -exec echo {} \; -exec convert {} -quality 95 {} \;
 
 typedef NS_ENUM(NSInteger, GSCSourceType) {
     GSCSourceTypeClass,
@@ -41,15 +48,18 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
 @property (weak) IBOutlet NSButton *removeCommentsBtn;
 //工程路径
 @property (nonatomic, copy) NSString *projectPath;
-//修改项目名
+//原项目名
+@property (nonatomic, copy) NSString *projectOldName;
+//新项目名
 @property (nonatomic, copy) NSString *projectNewName;
 //原前缀
 @property (nonatomic, copy) NSString *prefixOld;
 //修改后前缀
 @property (nonatomic, copy) NSString *prefixNew;
 //垃圾代码输出目录
-@property (nonatomic, copy) NSString *gOutParameterName;
-@property (nonatomic, copy) NSString *gSourceCodeDir;
+@property (nonatomic, copy) NSString *outgarbageCodePath;
+@property (nonatomic, copy) NSArray *ignoreDirNames;
+@property (nonatomic, copy) NSString *outDirString;
 @end
 
 static NSString *const kHClassFileTemplate = @"\
@@ -84,20 +94,73 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDirectory = NO;
     if (![fm fileExistsAtPath:self.projectPath isDirectory:&isDirectory]) {
-        printf("%s不存在\n", [self.projectPath UTF8String]);
+        NSLog(@"%s不存在", [self.projectPath UTF8String]);
         return;
     }
     if (!isDirectory) {
-        printf("%s不是目录\n", [self.projectPath UTF8String]);
+        NSLog(@"%s不是目录", [self.projectPath UTF8String]);
         return;
+    }
+    //修改项目名
+    if (![NSString checkStringEmpty:self.projectOldName] && ![NSString checkStringEmpty:self.projectNewName]) {
+        @autoreleasepool {
+            NSString *dir = self.projectPath.stringByDeletingLastPathComponent;
+            [self modifyProjectNameWithProjectDir:dir oldName:self.projectOldName newName:self.projectNewName];
+        }
+        NSLog(@"修改工程名完成");
+    }
+    //修改类前缀
+    if (![NSString checkStringEmpty:self.prefixOld] && ![NSString checkStringEmpty:self.prefixNew]) {
+        @autoreleasepool {
+            // 打开工程文件
+            NSError *error = nil;
+            NSMutableString *projectContent = [NSMutableString stringWithContentsOfFile:self.projectPath encoding:NSUTF8StringEncoding error:&error];
+            if (error) {
+                NSLog(@"打开工程文件 %s 失败：%s", self.projectPath.UTF8String, error.localizedDescription.UTF8String);
+                return;
+            }
+            [self modifyClassNamePrefixWithProjectContent:projectContent sourceCodeDir:self.projectPath ignoreDirNames:self.ignoreDirNames oldName:self.prefixOld newName:self.prefixNew];
+            [projectContent writeToFile:self.projectPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        }
+        NSLog(@"修改类名前缀完成");
     }
     //修改资源文件
     if (isModifyResource) {
-        
+        @autoreleasepool {
+            [self handleXcassetsFilesWithDirectory:self.projectPath];
+        }
+        NSLog(@"修改 Xcassets 中的图片名称完成");
     }
     //移除注释和空行
     if (isRemoveComments) {
-        
+        @autoreleasepool {
+            [self deleteCommentsWithDirectory:self.projectPath];
+        }
+        NSLog(@"删除注释和空行完成");
+    }
+    //垃圾代码输出
+    if (![NSString checkStringEmpty:self.outDirString]) {
+        if ([fm fileExistsAtPath:self.outDirString isDirectory:&isDirectory]) {
+            if (!isDirectory) {
+                NSLog(@"%s 已存在但不是文件夹，需要传入一个输出文件夹目录", [_outDirString UTF8String]);
+            }
+        } else {
+            NSError *error = nil;
+            if (![fm createDirectoryAtPath:self.outDirString withIntermediateDirectories:YES attributes:nil error:&error]) {
+                NSLog(@"创建输出目录失败，请确认 -spamCodeOut 之后接的是一个“输出文件夹目录”参数，错误信息如下：\n传入的输出文件夹目录：%s\n%s", [_outDirString UTF8String], [error.localizedDescription UTF8String]);
+            }
+        }
+        [self recursiveDirectoryWithDirectory:self.projectPath ignoreDirNames:_ignoreDirNames handleMFile:^(NSString *mFilePath) {
+            @autoreleasepool {
+                [self generateSpamCodeFileWithOutDirectory:self->_outDirString mFilePath:mFilePath type:GSCSourceTypeClass];
+                [self generateSpamCodeFileWithOutDirectory:self->_outDirString mFilePath:mFilePath type:GSCSourceTypeCategory];
+            }
+        } handleSwiftFile:^(NSString *swiftFilePath) {
+            @autoreleasepool {
+                [self generateSwiftSpamCodeFileWithOutDirectory:self.outDirString swiftFilePath:swiftFilePath];
+            }
+        }];
+        NSLog(@"生成垃圾代码完成");
     }
 }
 #pragma mark - Lifecycle
@@ -105,7 +168,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
-    
+    self.projectPathTF.stringValue = @"/Users/conner/Work/混淆代码";
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -113,21 +176,6 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     
     // Update the view, if already loaded.
 }
-
-#pragma mark - Private Methods
-//修改工程名
-- (void)modifyProjectName {
-  
-}
-//修改类名前缀
-- (void)modifyClassNamePrefix {
-    
-}
-//修改资源文件
-- (void)modifyResource {
-    
-}
-
 
 #pragma mark - 生成垃圾代码
 - (void)recursiveDirectoryWithDirectory:(NSString *)directory ignoreDirNames:(NSArray *)ignoreDirNames handleMFile:(void(^)(NSString *mFilePath))handleMFile handleSwiftFile:(void(^)(NSString *swiftFilePath))handleSwiftFile {
@@ -227,25 +275,25 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             NSString *symbol = [implementation substringWithRange:[matche rangeAtIndex:1]];
             NSString *methodName = [[implementation substringWithRange:[matche rangeAtIndex:2]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             if ([methodName containsString:@":"]) {
-                methodName = [methodName stringByAppendingFormat:@" %@:(NSString *)%@", self.gOutParameterName, self.gOutParameterName];
+                methodName = [methodName stringByAppendingFormat:@" %@:(NSString *)%@", self.outgarbageCodePath, self.outgarbageCodePath];
             } else {
-                methodName = [methodName stringByAppendingFormat:@"%@:(NSString *)%@", self.gOutParameterName.capitalizedString, self.gOutParameterName];
+                methodName = [methodName stringByAppendingFormat:@"%@:(NSString *)%@", self.outgarbageCodePath.capitalizedString, self.outgarbageCodePath];
             }
             
             [hFileMethodsString appendFormat:@"%@ (void)%@;\n", symbol, methodName];
             
             [mFileMethodsString appendFormat:@"%@ (void)%@ {\n", symbol, methodName];
-            [mFileMethodsString appendFormat:@"    NSLog(@\"%%@\", %@);\n", self.gOutParameterName];
+            [mFileMethodsString appendFormat:@"    NSLog(@\"%%@\", %@);\n", self.outgarbageCodePath];
             [mFileMethodsString appendString:@"}\n"];
         }];
         
         NSString *newCategoryName;
         switch (type) {
             case GSCSourceTypeClass:
-                newCategoryName = self.gOutParameterName.capitalizedString;
+                newCategoryName = self.outgarbageCodePath.capitalizedString;
                 break;
             case GSCSourceTypeCategory:
-                newCategoryName = [NSString stringWithFormat:@"%@%@", categoryName, self.gOutParameterName.capitalizedString];
+                newCategoryName = [NSString stringWithFormat:@"%@%@", categoryName, self.outgarbageCodePath.capitalizedString];
                 break;
         }
         
@@ -297,7 +345,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             }
             if (![funcName containsString:@"<"] && ![funcName containsString:@">"]) {
                 funcName = [NSString stringWithFormat:@"%@%@", funcName, [self randomStringWithLength:5]];
-                [methodsString appendFormat:kSwiftMethodTemplate, funcName, self.gOutParameterName.capitalizedString, self.gOutParameterName, oldParameterName, self.gOutParameterName];
+                [methodsString appendFormat:kSwiftMethodTemplate, funcName, self.outgarbageCodePath.capitalizedString, self.outgarbageCodePath, oldParameterName, self.outgarbageCodePath];
             } else {
                 NSLog(@"string contains `[` or `]` bla! funcName: %@", funcName);
             }
@@ -306,7 +354,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         
         NSString *className = [swiftFileContent substringWithRange:[classResult rangeAtIndex:2]];
         
-        NSString *fileName = [NSString stringWithFormat:@"%@%@Ext.swift", className,self.gOutParameterName.capitalizedString];
+        NSString *fileName = [NSString stringWithFormat:@"%@%@Ext.swift", className,self.outgarbageCodePath.capitalizedString];
         NSString *filePath = [outDirectory stringByAppendingPathComponent:fileName];
         NSString *fileContent = @"";
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
@@ -319,7 +367,12 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
 #pragma mark - 处理 Xcassets 中的图片文件
 - (void)handleXcassetsFilesWithDirectory:(NSString *)directory {
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray<NSString *> *files = [fm contentsOfDirectoryAtPath:directory error:nil];
+    NSError *error;
+    NSArray<NSString *> *files = [fm contentsOfDirectoryAtPath:directory error:&error];
+    if (error) {
+        NSLog(@"处理图片读取文件失败");
+        return;
+    }
     BOOL isDirectory;
     for (NSString *fileName in files) {
         NSString *filePath = [directory stringByAppendingPathComponent:fileName];
@@ -377,7 +430,12 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
 #pragma mark - 删除注释
 - (void)deleteCommentsWithDirectory:(NSString *)directory {
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray<NSString *> *files = [fm contentsOfDirectoryAtPath:directory error:nil];
+    NSError *error;
+    NSArray<NSString *> *files = [fm contentsOfDirectoryAtPath:directory error:&error];
+    if (error) {
+        NSLog(@"删除注释读取文件失败");
+        return;
+    }
     BOOL isDirectory;
     for (NSString *fileName in files) {
         NSString *filePath = [directory stringByAppendingPathComponent:fileName];
@@ -540,7 +598,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             NSError *error = nil;
             NSMutableString *fileContent = [NSMutableString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
             if (error) {
-                printf("打开文件 %s 失败：%s\n", path.UTF8String, error.localizedDescription.UTF8String);
+                NSLog(@"打开文件 %s 失败：%s", path.UTF8String, error.localizedDescription.UTF8String);
                 abort();
             }
             
@@ -550,7 +608,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             error = nil;
             [fileContent writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
             if (error) {
-                printf("保存文件 %s 失败：%s\n", path.UTF8String, error.localizedDescription.UTF8String);
+                NSLog(@"保存文件 %s 失败：%s", path.UTF8String, error.localizedDescription.UTF8String);
                 abort();
             }
         }
@@ -598,7 +656,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
                 }
                 
                 @autoreleasepool {
-                    [self modifyFilesClassNameWithSourceCodeDir:self.gSourceCodeDir oldClassName:fileName newClassName:newClassName];
+                    [self modifyFilesClassNameWithSourceCodeDir:self.projectPath oldClassName:fileName newClassName:newClassName];
                 }
             } else {
                 continue;
@@ -614,7 +672,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             }
             
             @autoreleasepool {
-                [self modifyFilesClassNameWithSourceCodeDir:self.gSourceCodeDir oldClassName:fileName.stringByDeletingPathExtension newClassName:newClassName];
+                [self modifyFilesClassNameWithSourceCodeDir:self.projectPath oldClassName:fileName.stringByDeletingPathExtension newClassName:newClassName];
             }
         } else {
             continue;
@@ -687,7 +745,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     NSError *error;
     [[NSFileManager defaultManager] moveItemAtPath:oldPath toPath:newPath error:&error];
     if (error) {
-        printf("修改文件名称失败。\n  oldPath=%s\n  newPath=%s\n  ERROR:%s\n", oldPath.UTF8String, newPath.UTF8String, error.localizedDescription.UTF8String);
+        NSLog(@"修改文件名称失败。\n  oldPath=%s\n  newPath=%s\n  ERROR:%s", oldPath.UTF8String, newPath.UTF8String, error.localizedDescription.UTF8String);
         abort();
     }
 }
