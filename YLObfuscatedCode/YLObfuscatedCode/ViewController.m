@@ -48,6 +48,8 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
 @property (weak) IBOutlet NSButton *removeCommentsBtn;
 //工程路径
 @property (nonatomic, copy) NSString *projectPath;
+//工程名
+@property (nonatomic, copy) NSString *projectName;
 //原项目名
 @property (nonatomic, copy) NSString *projectOldName;
 //新项目名
@@ -94,11 +96,11 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDirectory = NO;
     if (![fm fileExistsAtPath:self.projectPath isDirectory:&isDirectory]) {
-        NSLog(@"%s不存在", [self.projectPath UTF8String]);
+        NSLog(@"%@不存在", self.projectPath);
         return;
     }
     if (!isDirectory) {
-        NSLog(@"%s不是目录", [self.projectPath UTF8String]);
+        NSLog(@"%@不是目录", self.projectPath);
         return;
     }
     //修改项目名
@@ -114,9 +116,10 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         @autoreleasepool {
             // 打开工程文件
             NSError *error = nil;
-            NSMutableString *projectContent = [NSMutableString stringWithContentsOfFile:self.projectPath encoding:NSUTF8StringEncoding error:&error];
+            NSString *projectFilePath = [self.projectPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xcodeproj",self.projectName]];
+            NSMutableString *projectContent = [NSMutableString stringWithContentsOfFile:projectFilePath encoding:NSUTF8StringEncoding error:&error];
             if (error) {
-                NSLog(@"打开工程文件 %s 失败：%s", self.projectPath.UTF8String, error.localizedDescription.UTF8String);
+                NSLog(@"打开工程文件 %@ 失败：%@", self.projectPath, error.localizedDescription);
                 return;
             }
             [self modifyClassNamePrefixWithProjectContent:projectContent sourceCodeDir:self.projectPath ignoreDirNames:self.ignoreDirNames oldName:self.prefixOld newName:self.prefixNew];
@@ -142,12 +145,12 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     if (![NSString checkStringEmpty:self.outDirString]) {
         if ([fm fileExistsAtPath:self.outDirString isDirectory:&isDirectory]) {
             if (!isDirectory) {
-                NSLog(@"%s 已存在但不是文件夹，需要传入一个输出文件夹目录", [_outDirString UTF8String]);
+                NSLog(@"%@ 已存在但不是文件夹，需要传入一个输出文件夹目录",_outDirString);
             }
         } else {
             NSError *error = nil;
             if (![fm createDirectoryAtPath:self.outDirString withIntermediateDirectories:YES attributes:nil error:&error]) {
-                NSLog(@"创建输出目录失败，请确认 -spamCodeOut 之后接的是一个“输出文件夹目录”参数，错误信息如下：\n传入的输出文件夹目录：%s\n%s", [_outDirString UTF8String], [error.localizedDescription UTF8String]);
+                NSLog(@"创建输出目录失败，请确认 -spamCodeOut 之后接的是一个“输出文件夹目录”参数，错误信息如下：\n传入的输出文件夹目录：%@\n%@", _outDirString, error.localizedDescription);
             }
         }
         [self recursiveDirectoryWithDirectory:self.projectPath ignoreDirNames:_ignoreDirNames handleMFile:^(NSString *mFilePath) {
@@ -169,6 +172,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
 
     // Do any additional setup after loading the view.
     self.projectPathTF.stringValue = @"/Users/conner/Work/混淆代码";
+    
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -598,7 +602,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             NSError *error = nil;
             NSMutableString *fileContent = [NSMutableString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
             if (error) {
-                NSLog(@"打开文件 %s 失败：%s", path.UTF8String, error.localizedDescription.UTF8String);
+                NSLog(@"打开文件 %@ 失败：%@", path, error.localizedDescription);
                 abort();
             }
             
@@ -608,7 +612,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             error = nil;
             [fileContent writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
             if (error) {
-                NSLog(@"保存文件 %s 失败：%s", path.UTF8String, error.localizedDescription.UTF8String);
+                NSLog(@"保存文件 %@ 失败：%@", path, error.localizedDescription);
                 abort();
             }
         }
@@ -745,7 +749,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     NSError *error;
     [[NSFileManager defaultManager] moveItemAtPath:oldPath toPath:newPath error:&error];
     if (error) {
-        NSLog(@"修改文件名称失败。\n  oldPath=%s\n  newPath=%s\n  ERROR:%s", oldPath.UTF8String, newPath.UTF8String, error.localizedDescription.UTF8String);
+        NSLog(@"修改文件名称失败。\n  oldPath=%@\n  newPath=%@\n  ERROR:%@", oldPath, newPath, error.localizedDescription);
         abort();
     }
 }
