@@ -27,6 +27,15 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
  */
 @property (weak) IBOutlet NSTextField *projectPathTF;
 /**
+ 工程文件路径
+ */
+@property (weak) IBOutlet NSTextField *projecgtFilePathTF;
+/**
+ 垃圾代码输出目录
+ */
+@property (weak) IBOutlet NSTextField *outgarbageCodePathTF;
+
+/**
  修改项目名
  */
 @property (weak) IBOutlet NSTextField *changeProjectNameTF;
@@ -48,8 +57,8 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
 @property (weak) IBOutlet NSButton *removeCommentsBtn;
 //工程路径
 @property (nonatomic, copy) NSString *projectPath;
-//工程名
-@property (nonatomic, copy) NSString *projectName;
+//工程文件路径
+@property (nonatomic, copy) NSString *projectFilePath;
 //原项目名
 @property (nonatomic, copy) NSString *projectOldName;
 //新项目名
@@ -58,10 +67,13 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
 @property (nonatomic, copy) NSString *prefixOld;
 //修改后前缀
 @property (nonatomic, copy) NSString *prefixNew;
-//垃圾代码输出目录
-@property (nonatomic, copy) NSString *outgarbageCodePath;
+//垃圾代码参数名
+@property (nonatomic, copy) NSString *garbageCodeParameter;
+//垃圾代码输出路径
+@property (nonatomic, copy) NSString *outGarbageCodePath;
+//忽略文件目录
 @property (nonatomic, copy) NSArray *ignoreDirNames;
-@property (nonatomic, copy) NSString *outDirString;
+
 @end
 
 static NSString *const kHClassFileTemplate = @"\
@@ -86,10 +98,13 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
 @implementation ViewController
 //开始修改文件
 - (IBAction)beganToChange:(NSButton *)sender {
+    __weak __typeof(&*self)weakSelf = self;
     self.projectPath = self.projectPathTF.stringValue;
     self.projectNewName = self.changeProjectNameTF.stringValue;
+    self.projectFilePath = self.projecgtFilePathTF.stringValue;
     self.prefixOld = self.prefixOldTF.stringValue;
     self.prefixNew = self.prefixNewTF.stringValue;
+    
     BOOL isModifyResource = self.modifyResourceBtn.state;
     BOOL isRemoveComments = self.removeCommentsBtn.state;
     //检测项目目录是否存在
@@ -116,7 +131,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         @autoreleasepool {
             // 打开工程文件
             NSError *error = nil;
-            NSString *projectFilePath = [self.projectPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xcodeproj",self.projectName]];
+            NSString *projectFilePath = [self.projectFilePath stringByAppendingPathComponent:@"project.pbxproj"];
             NSMutableString *projectContent = [NSMutableString stringWithContentsOfFile:projectFilePath encoding:NSUTF8StringEncoding error:&error];
             if (error) {
                 NSLog(@"打开工程文件 %@ 失败：%@", self.projectPath, error.localizedDescription);
@@ -142,25 +157,25 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         NSLog(@"删除注释和空行完成");
     }
     //垃圾代码输出
-    if (![NSString checkStringEmpty:self.outDirString]) {
-        if ([fm fileExistsAtPath:self.outDirString isDirectory:&isDirectory]) {
+    if (![NSString checkStringEmpty:self.outGarbageCodePath]) {
+        if ([fm fileExistsAtPath:self.outGarbageCodePath isDirectory:&isDirectory]) {
             if (!isDirectory) {
-                NSLog(@"%@ 已存在但不是文件夹，需要传入一个输出文件夹目录",_outDirString);
+                NSLog(@"%@ 已存在但不是文件夹，需要传入一个输出文件夹目录",self.outGarbageCodePath);
             }
         } else {
             NSError *error = nil;
-            if (![fm createDirectoryAtPath:self.outDirString withIntermediateDirectories:YES attributes:nil error:&error]) {
-                NSLog(@"创建输出目录失败，请确认 -spamCodeOut 之后接的是一个“输出文件夹目录”参数，错误信息如下：\n传入的输出文件夹目录：%@\n%@", _outDirString, error.localizedDescription);
+            if (![fm createDirectoryAtPath:self.outGarbageCodePath withIntermediateDirectories:YES attributes:nil error:&error]) {
+                NSLog(@"创建输出目录失败，请确认 -spamCodeOut 之后接的是一个“输出文件夹目录”参数，错误信息如下：\n传入的输出文件夹目录：%@\n%@", _outGarbageCodePath, error.localizedDescription);
             }
         }
         [self recursiveDirectoryWithDirectory:self.projectPath ignoreDirNames:_ignoreDirNames handleMFile:^(NSString *mFilePath) {
             @autoreleasepool {
-                [self generateSpamCodeFileWithOutDirectory:self->_outDirString mFilePath:mFilePath type:GSCSourceTypeClass];
-                [self generateSpamCodeFileWithOutDirectory:self->_outDirString mFilePath:mFilePath type:GSCSourceTypeCategory];
+                [self generateSpamCodeFileWithOutDirectory:weakSelf.outGarbageCodePath mFilePath:mFilePath type:GSCSourceTypeClass];
+                [self generateSpamCodeFileWithOutDirectory:weakSelf.outGarbageCodePath mFilePath:mFilePath type:GSCSourceTypeCategory];
             }
         } handleSwiftFile:^(NSString *swiftFilePath) {
             @autoreleasepool {
-                [self generateSwiftSpamCodeFileWithOutDirectory:self.outDirString swiftFilePath:swiftFilePath];
+                [self generateSwiftSpamCodeFileWithOutDirectory:weakSelf.outGarbageCodePath swiftFilePath:swiftFilePath];
             }
         }];
         NSLog(@"生成垃圾代码完成");
@@ -173,6 +188,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     // Do any additional setup after loading the view.
     self.projectPathTF.stringValue = @"/Users/conner/Work/混淆代码";
     
+    self.ignoreDirNames = @[@"Pods"];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -279,25 +295,25 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             NSString *symbol = [implementation substringWithRange:[matche rangeAtIndex:1]];
             NSString *methodName = [[implementation substringWithRange:[matche rangeAtIndex:2]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             if ([methodName containsString:@":"]) {
-                methodName = [methodName stringByAppendingFormat:@" %@:(NSString *)%@", self.outgarbageCodePath, self.outgarbageCodePath];
+                methodName = [methodName stringByAppendingFormat:@" %@:(NSString *)%@", self.garbageCodeParameter, self.garbageCodeParameter];
             } else {
-                methodName = [methodName stringByAppendingFormat:@"%@:(NSString *)%@", self.outgarbageCodePath.capitalizedString, self.outgarbageCodePath];
+                methodName = [methodName stringByAppendingFormat:@"%@:(NSString *)%@", self.garbageCodeParameter.capitalizedString, self.garbageCodeParameter];
             }
             
             [hFileMethodsString appendFormat:@"%@ (void)%@;\n", symbol, methodName];
             
             [mFileMethodsString appendFormat:@"%@ (void)%@ {\n", symbol, methodName];
-            [mFileMethodsString appendFormat:@"    NSLog(@\"%%@\", %@);\n", self.outgarbageCodePath];
+            [mFileMethodsString appendFormat:@"    NSLog(@\"%%@\", %@);\n", self.garbageCodeParameter];
             [mFileMethodsString appendString:@"}\n"];
         }];
         
         NSString *newCategoryName;
         switch (type) {
             case GSCSourceTypeClass:
-                newCategoryName = self.outgarbageCodePath.capitalizedString;
+                newCategoryName = self.garbageCodeParameter.capitalizedString;
                 break;
             case GSCSourceTypeCategory:
-                newCategoryName = [NSString stringWithFormat:@"%@%@", categoryName, self.outgarbageCodePath.capitalizedString];
+                newCategoryName = [NSString stringWithFormat:@"%@%@", categoryName, self.garbageCodeParameter.capitalizedString];
                 break;
         }
         
@@ -349,7 +365,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
             }
             if (![funcName containsString:@"<"] && ![funcName containsString:@">"]) {
                 funcName = [NSString stringWithFormat:@"%@%@", funcName, [self randomStringWithLength:5]];
-                [methodsString appendFormat:kSwiftMethodTemplate, funcName, self.outgarbageCodePath.capitalizedString, self.outgarbageCodePath, oldParameterName, self.outgarbageCodePath];
+                [methodsString appendFormat:kSwiftMethodTemplate, funcName, self.garbageCodeParameter.capitalizedString, self.garbageCodeParameter, oldParameterName, self.garbageCodeParameter];
             } else {
                 NSLog(@"string contains `[` or `]` bla! funcName: %@", funcName);
             }
@@ -358,7 +374,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         
         NSString *className = [swiftFileContent substringWithRange:[classResult rangeAtIndex:2]];
         
-        NSString *fileName = [NSString stringWithFormat:@"%@%@Ext.swift", className,self.outgarbageCodePath.capitalizedString];
+        NSString *fileName = [NSString stringWithFormat:@"%@%@Ext.swift", className,self.garbageCodeParameter.capitalizedString];
         NSString *filePath = [outDirectory stringByAppendingPathComponent:fileName];
         NSString *fileContent = @"";
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {

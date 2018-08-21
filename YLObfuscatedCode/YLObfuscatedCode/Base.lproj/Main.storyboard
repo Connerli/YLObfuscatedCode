@@ -706,11 +706,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-To-mLx">
-                                <rect key="frame" x="43" y="233" width="58" height="17"/>
+                                <rect key="frame" x="43" y="363" width="58" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="工程目录" id="Lt2-1s-w1a">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -718,7 +718,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-na-bsU">
-                                <rect key="frame" x="43" y="196" width="71" height="17"/>
+                                <rect key="frame" x="43" y="213" width="71" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="修改工程名" id="U38-KC-Hws">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -726,7 +726,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="soS-8R-ORP">
-                                <rect key="frame" x="43" y="159" width="71" height="17"/>
+                                <rect key="frame" x="43" y="176" width="71" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="修改类前缀" id="ifU-VQ-5Ha">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -734,8 +734,8 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-z9-G2M">
-                                <rect key="frame" x="149" y="231" width="301" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Project 路径" drawsBackground="YES" id="XMd-pp-dbJ">
+                                <rect key="frame" x="149" y="361" width="441" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="工程主目录例：/Users/conner/Desktop/Test" drawsBackground="YES" id="XMd-pp-dbJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -745,7 +745,7 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9N-ie-4P1">
-                                <rect key="frame" x="149" y="194" width="100" height="22"/>
+                                <rect key="frame" x="149" y="211" width="100" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5pb-2r-bao"/>
                                 </constraints>
@@ -759,7 +759,7 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-RY-9EV">
-                                <rect key="frame" x="149" y="157" width="100" height="22"/>
+                                <rect key="frame" x="149" y="174" width="100" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="t6k-7e-zmg"/>
                                 </constraints>
@@ -773,8 +773,8 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVI-dU-zpV">
-                                <rect key="frame" x="279" y="157" width="100" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="修改后前缀" drawsBackground="YES" id="lck-dD-SIq">
+                                <rect key="frame" x="289" y="174" width="100" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="新前缀" drawsBackground="YES" id="lck-dD-SIq">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -784,21 +784,21 @@
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-NI-U5A">
-                                <rect key="frame" x="43" y="79" width="195" height="18"/>
+                                <rect key="frame" x="43" y="96" width="195" height="18"/>
                                 <buttonCell key="cell" type="check" title="删除代码中的所有注释和空行" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aHr-oJ-ePE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Le4-fr-MXW">
-                                <rect key="frame" x="43" y="113" width="115" height="18"/>
+                                <rect key="frame" x="43" y="130" width="115" height="18"/>
                                 <buttonCell key="cell" type="check" title="修改资源文件名" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FHz-B5-9O9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8hX-eQ-ggr">
-                                <rect key="frame" x="208" y="29" width="64" height="19"/>
+                                <rect key="frame" x="278" y="29" width="64" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="开始修改" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qMN-nH-QOf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -808,8 +808,56 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDb-6d-9C7">
-                                <rect key="frame" x="279" y="194" width="100" height="22"/>
+                                <rect key="frame" x="289" y="211" width="100" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="新工程名" drawsBackground="YES" id="iDg-cI-U19">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-5z-6W6">
+                                <rect key="frame" x="43" y="326" width="84" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="工程文件路径" id="Cqe-Oi-C5t">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PiV-XQ-miL">
+                                <rect key="frame" x="149" y="324" width="441" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="工程文件完整路径例：/Users/conner/Desktop/Test/Test.xcodeproj" drawsBackground="YES" id="Jqz-Ca-gl3">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DVI-vm-8Fw">
+                                <rect key="frame" x="43" y="287" width="111" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="垃圾代码输出路径" id="N83-vO-h22">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="adA-2h-GNW">
+                                <rect key="frame" x="152" y="285" width="438" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="例：/Users/conner/Desktop/Test/Code" drawsBackground="YES" id="375-eh-bMB">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Fg-iQ-utH">
+                                <rect key="frame" x="43" y="250" width="84" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="忽略文件路径" id="ONM-EW-UJE">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-nb-LaK">
+                                <rect key="frame" x="152" y="248" width="438" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="忽略文件目录，以逗号隔开" drawsBackground="YES" id="SBJ-r3-yDM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -818,43 +866,60 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="centerY" secondItem="soS-8R-ORP" secondAttribute="centerY" id="1ID-qf-R65"/>
+                            <constraint firstAttribute="trailing" secondItem="sVI-dU-zpV" secondAttribute="trailing" constant="231" id="1bN-Bp-k5U"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="width" secondItem="w9N-ie-4P1" secondAttribute="width" id="2ec-p5-qiz"/>
+                            <constraint firstAttribute="trailing" secondItem="q1f-nb-LaK" secondAttribute="trailing" constant="30" id="2zp-tZ-mzI"/>
                             <constraint firstItem="fxg-To-mLx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="45" id="5he-kI-gV1"/>
-                            <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w9N-ie-4P1" secondAttribute="trailing" symbolic="YES" id="CYH-5R-ehb"/>
+                            <constraint firstItem="DVI-vm-8Fw" firstAttribute="leading" secondItem="wBb-5z-6W6" secondAttribute="leading" id="7wP-qi-y7p"/>
+                            <constraint firstItem="PiV-XQ-miL" firstAttribute="centerY" secondItem="wBb-5z-6W6" secondAttribute="centerY" id="9QF-eT-Ume"/>
+                            <constraint firstAttribute="trailing" secondItem="nDb-6d-9C7" secondAttribute="trailing" constant="231" id="9cM-og-tJu"/>
+                            <constraint firstItem="wBb-5z-6W6" firstAttribute="top" secondItem="fxg-To-mLx" secondAttribute="bottom" constant="20" id="Dqp-iQ-1hY"/>
+                            <constraint firstItem="PiV-XQ-miL" firstAttribute="leading" secondItem="wBb-5z-6W6" secondAttribute="trailing" constant="24" id="E6G-2x-1NV"/>
                             <constraint firstItem="w9N-ie-4P1" firstAttribute="centerY" secondItem="0gq-na-bsU" secondAttribute="centerY" id="GCP-Rp-4EI"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0gq-na-bsU" secondAttribute="trailing" constant="20" symbolic="YES" id="HJM-hc-94a"/>
                             <constraint firstItem="T6r-z9-G2M" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="trailing" constant="50" id="I4w-Ae-Fyf"/>
                             <constraint firstItem="soS-8R-ORP" firstAttribute="top" secondItem="0gq-na-bsU" secondAttribute="bottom" constant="20" id="IeH-VL-OHR"/>
-                            <constraint firstAttribute="trailing" secondItem="sVI-dU-zpV" secondAttribute="trailing" constant="101" id="Ke4-0l-exj"/>
+                            <constraint firstItem="4Fg-iQ-utH" firstAttribute="leading" secondItem="wBb-5z-6W6" secondAttribute="leading" id="JzZ-RC-cxq"/>
                             <constraint firstItem="fxg-To-mLx" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="MIO-Tj-X8j"/>
                             <constraint firstAttribute="trailing" secondItem="T6r-z9-G2M" secondAttribute="trailing" constant="30" id="NDU-00-VEy"/>
-                            <constraint firstItem="sVI-dU-zpV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3Ve-RY-9EV" secondAttribute="trailing" constant="8" symbolic="YES" id="O3A-H3-wWL"/>
+                            <constraint firstItem="DVI-vm-8Fw" firstAttribute="top" secondItem="PiV-XQ-miL" secondAttribute="bottom" constant="20" id="PZi-lH-35B"/>
+                            <constraint firstItem="0gq-na-bsU" firstAttribute="top" secondItem="4Fg-iQ-utH" secondAttribute="bottom" constant="20" id="PuI-px-hBm"/>
+                            <constraint firstItem="sVI-dU-zpV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3Ve-RY-9EV" secondAttribute="trailing" constant="8" symbolic="YES" id="PxL-FF-Tku"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="soS-8R-ORP" secondAttribute="trailing" constant="20" symbolic="YES" id="Qg2-fj-o6f"/>
                             <constraint firstItem="T6r-z9-G2M" firstAttribute="centerY" secondItem="fxg-To-mLx" secondAttribute="centerY" id="S6u-gN-Cpn"/>
+                            <constraint firstAttribute="trailing" secondItem="PiV-XQ-miL" secondAttribute="trailing" constant="30" id="VXf-6a-gke"/>
                             <constraint firstItem="Le4-fr-MXW" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="Vo9-uy-oph"/>
                             <constraint firstItem="8hX-eQ-ggr" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="WgI-i2-Oam"/>
                             <constraint firstItem="Yzj-NI-U5A" firstAttribute="top" secondItem="Le4-fr-MXW" secondAttribute="bottom" constant="20" id="WiN-HY-dog"/>
                             <constraint firstItem="3Ve-RY-9EV" firstAttribute="centerY" secondItem="soS-8R-ORP" secondAttribute="centerY" id="XlQ-J2-rzJ"/>
+                            <constraint firstAttribute="trailing" secondItem="adA-2h-GNW" secondAttribute="trailing" constant="30" id="b38-KS-SDd"/>
                             <constraint firstItem="Le4-fr-MXW" firstAttribute="top" secondItem="soS-8R-ORP" secondAttribute="bottom" constant="30" id="bXB-9P-QpR"/>
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="width" secondItem="3Ve-RY-9EV" secondAttribute="width" id="c30-Id-Jvy"/>
-                            <constraint firstItem="0gq-na-bsU" firstAttribute="top" secondItem="fxg-To-mLx" secondAttribute="bottom" constant="20" id="cKx-8i-On6"/>
+                            <constraint firstItem="q1f-nb-LaK" firstAttribute="leading" secondItem="4Fg-iQ-utH" secondAttribute="trailing" constant="27" id="ce8-98-jOh"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Le4-fr-MXW" secondAttribute="trailing" constant="20" symbolic="YES" id="ciV-aP-w1T"/>
+                            <constraint firstItem="adA-2h-GNW" firstAttribute="centerY" secondItem="DVI-vm-8Fw" secondAttribute="centerY" id="cil-Wj-BYo"/>
                             <constraint firstItem="w9N-ie-4P1" firstAttribute="leading" secondItem="T6r-z9-G2M" secondAttribute="leading" id="dcl-bv-7Sy"/>
-                            <constraint firstAttribute="trailing" secondItem="nDb-6d-9C7" secondAttribute="trailing" constant="101" id="i7L-oW-zjH"/>
                             <constraint firstAttribute="bottom" secondItem="8hX-eQ-ggr" secondAttribute="bottom" constant="30" id="iPo-2v-mey"/>
                             <constraint firstItem="0gq-na-bsU" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="j4s-uX-N6s"/>
                             <constraint firstItem="soS-8R-ORP" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="jT5-Gw-GU4"/>
+                            <constraint firstItem="4Fg-iQ-utH" firstAttribute="top" secondItem="DVI-vm-8Fw" secondAttribute="bottom" constant="20" id="mhh-ln-f2Y"/>
+                            <constraint firstItem="adA-2h-GNW" firstAttribute="leading" secondItem="DVI-vm-8Fw" secondAttribute="trailing" id="nch-W0-w65"/>
                             <constraint firstItem="Yzj-NI-U5A" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="qIS-U4-ove"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yzj-NI-U5A" secondAttribute="trailing" constant="20" symbolic="YES" id="rby-u0-OBv"/>
+                            <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w9N-ie-4P1" secondAttribute="trailing" symbolic="YES" id="sAq-HJ-4mD"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="centerY" secondItem="w9N-ie-4P1" secondAttribute="centerY" id="t0V-1E-1Sn"/>
+                            <constraint firstItem="q1f-nb-LaK" firstAttribute="centerY" secondItem="4Fg-iQ-utH" secondAttribute="centerY" id="v81-UJ-SW4"/>
                             <constraint firstItem="3Ve-RY-9EV" firstAttribute="leading" secondItem="T6r-z9-G2M" secondAttribute="leading" id="wWe-bQ-84Q"/>
+                            <constraint firstItem="wBb-5z-6W6" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="zYj-ug-2eO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="changeProjectNameTF" destination="w9N-ie-4P1" id="oIi-4x-eXD"/>
                         <outlet property="modifyResourceBtn" destination="Le4-fr-MXW" id="HFY-je-O2y"/>
+                        <outlet property="outgarbageCodePathTF" destination="adA-2h-GNW" id="Wvy-U0-v4E"/>
                         <outlet property="prefixNewTF" destination="sVI-dU-zpV" id="Zga-H1-3WK"/>
                         <outlet property="prefixOldTF" destination="3Ve-RY-9EV" id="r2F-hB-y5o"/>
+                        <outlet property="projecgtFilePathTF" destination="PiV-XQ-miL" id="3Xh-ij-afe"/>
                         <outlet property="projectPathTF" destination="T6r-z9-G2M" id="gVX-1l-FrL"/>
                         <outlet property="removeCommentsBtn" destination="Yzj-NI-U5A" id="cUB-sJ-3kC"/>
                     </connections>
