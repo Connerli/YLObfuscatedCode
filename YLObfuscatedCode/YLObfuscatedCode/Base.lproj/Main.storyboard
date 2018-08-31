@@ -814,6 +814,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="a60-Ji-zjr"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-5z-6W6">
                                 <rect key="frame" x="43" y="326" width="84" height="17"/>
@@ -906,7 +909,7 @@
                             <constraint firstItem="adA-2h-GNW" firstAttribute="leading" secondItem="DVI-vm-8Fw" secondAttribute="trailing" id="nch-W0-w65"/>
                             <constraint firstItem="Yzj-NI-U5A" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="qIS-U4-ove"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yzj-NI-U5A" secondAttribute="trailing" constant="20" symbolic="YES" id="rby-u0-OBv"/>
-                            <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w9N-ie-4P1" secondAttribute="trailing" symbolic="YES" id="sAq-HJ-4mD"/>
+                            <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w9N-ie-4P1" secondAttribute="trailing" constant="8" symbolic="YES" id="sAq-HJ-4mD"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="centerY" secondItem="w9N-ie-4P1" secondAttribute="centerY" id="t0V-1E-1Sn"/>
                             <constraint firstItem="q1f-nb-LaK" firstAttribute="centerY" secondItem="4Fg-iQ-utH" secondAttribute="centerY" id="v81-UJ-SW4"/>
                             <constraint firstItem="3Ve-RY-9EV" firstAttribute="leading" secondItem="T6r-z9-G2M" secondAttribute="leading" id="wWe-bQ-84Q"/>
@@ -914,8 +917,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="changeProjectNameTF" destination="w9N-ie-4P1" id="oIi-4x-eXD"/>
+                        <outlet property="changedProjectNameTF" destination="nDb-6d-9C7" id="82b-XU-O1S"/>
                         <outlet property="modifyResourceBtn" destination="Le4-fr-MXW" id="HFY-je-O2y"/>
+                        <outlet property="oldProjectNameTF" destination="w9N-ie-4P1" id="aEs-7p-BIy"/>
                         <outlet property="outgarbageCodePathTF" destination="adA-2h-GNW" id="Wvy-U0-v4E"/>
                         <outlet property="prefixNewTF" destination="sVI-dU-zpV" id="Zga-H1-3WK"/>
                         <outlet property="prefixOldTF" destination="3Ve-RY-9EV" id="r2F-hB-y5o"/>

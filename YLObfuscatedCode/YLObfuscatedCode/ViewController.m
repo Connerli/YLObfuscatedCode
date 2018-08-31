@@ -36,9 +36,13 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
 @property (weak) IBOutlet NSTextField *outgarbageCodePathTF;
 
 /**
- 修改项目名
+ 原项目名
  */
-@property (weak) IBOutlet NSTextField *changeProjectNameTF;
+@property (weak) IBOutlet NSTextField *oldProjectNameTF;
+/**
+ 修改后的项目名
+ */
+@property (weak) IBOutlet NSTextField *changedProjectNameTF;
 /**
  原前缀
  */
@@ -100,7 +104,8 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
 - (IBAction)beganToChange:(NSButton *)sender {
     __weak __typeof(&*self)weakSelf = self;
     self.projectPath = self.projectPathTF.stringValue;
-    self.projectNewName = self.changeProjectNameTF.stringValue;
+    self.projectOldName = self.oldProjectNameTF.stringValue;
+    self.projectNewName = self.changedProjectNameTF.stringValue;
     self.projectFilePath = self.projecgtFilePathTF.stringValue;
     self.prefixOld = self.prefixOldTF.stringValue;
     self.prefixNew = self.prefixNewTF.stringValue;
@@ -121,7 +126,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     //修改项目名
     if (![NSString checkStringEmpty:self.projectOldName] && ![NSString checkStringEmpty:self.projectNewName]) {
         @autoreleasepool {
-            NSString *dir = self.projectPath.stringByDeletingLastPathComponent;
+            NSString *dir = self.projectPath;
             [self modifyProjectNameWithProjectDir:dir oldName:self.projectOldName newName:self.projectNewName];
         }
         NSLog(@"修改工程名完成");
