@@ -26,10 +26,12 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
  工程路径
  */
 @property (weak) IBOutlet NSTextField *projectPathTF;
+
 /**
  工程文件路径
  */
 @property (weak) IBOutlet NSTextField *projecgtFilePathTF;
+
 /**
  垃圾代码输出目录
  */
@@ -100,6 +102,48 @@ print(%@)\n\
 }\n";
 static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 @implementation ViewController
+- (IBAction)selectFile:(NSButton *)sender {
+    NSOpenPanel* panel = [NSOpenPanel openPanel];
+    __weak typeof(self)weakSelf = self;
+    NSInteger tag = sender.tag - 100;;
+    //是否可以创建文件夹
+    panel.canCreateDirectories = YES;
+    //是否可以选择文件夹
+    panel.canChooseDirectories = YES;
+    //是否可以选择文件
+    panel.canChooseFiles = YES;
+    //是否可以多选
+    [panel setAllowsMultipleSelection:NO];
+    //显示
+    [panel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
+        //是否点击open 按钮
+        if (result == NSModalResponseOK) {
+            //NSURL *pathUrl = [panel URL];
+            NSString *pathString = [panel.URLs.firstObject path];
+            switch (tag) {
+                case 1:
+                {
+                    weakSelf.projectPathTF.stringValue = pathString;
+                }
+                    break;
+                case 2:
+                {
+                    weakSelf.projecgtFilePathTF.stringValue = pathString;
+                }
+                    break;
+                case 3:
+                {
+                    weakSelf.outgarbageCodePathTF.stringValue = pathString;
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+    }];
+}
+
 //开始修改文件
 - (IBAction)beganToChange:(NSButton *)sender {
     __weak __typeof(&*self)weakSelf = self;
@@ -189,11 +233,8 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     // Do any additional setup after loading the view.
-    self.projectPathTF.stringValue = @"/Users/conner/Work/混淆代码";
     
-    self.ignoreDirNames = @[@"Pods"];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
