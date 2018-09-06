@@ -706,27 +706,27 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="356"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-To-mLx">
-                                <rect key="frame" x="43" y="329" width="62" height="17"/>
+                                <rect key="frame" x="43" y="319" width="62" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="工程目录:" id="Lt2-1s-w1a">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-na-bsU">
-                                <rect key="frame" x="43" y="179" width="71" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-na-bsU">
+                                <rect key="frame" x="43" y="206" width="71" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="修改工程名" id="U38-KC-Hws">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="soS-8R-ORP">
-                                <rect key="frame" x="43" y="142" width="71" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="soS-8R-ORP">
+                                <rect key="frame" x="43" y="169" width="71" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="修改类前缀" id="ifU-VQ-5Ha">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -734,9 +734,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9N-ie-4P1">
-                                <rect key="frame" x="152" y="177" width="100" height="22"/>
+                                <rect key="frame" x="152" y="204" width="201" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="5pb-2r-bao"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5pb-2r-bao"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="原工程名" drawsBackground="YES" id="keF-et-L6v">
                                     <font key="font" metaFont="system"/>
@@ -748,9 +748,9 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-RY-9EV">
-                                <rect key="frame" x="152" y="140" width="100" height="22"/>
+                                <rect key="frame" x="152" y="167" width="201" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="t6k-7e-zmg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="t6k-7e-zmg"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="原前缀" drawsBackground="YES" id="bhX-Jh-GnD">
                                     <font key="font" metaFont="system"/>
@@ -762,7 +762,7 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVI-dU-zpV">
-                                <rect key="frame" x="289" y="140" width="100" height="22"/>
+                                <rect key="frame" x="390" y="167" width="200" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="新前缀" drawsBackground="YES" id="lck-dD-SIq">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -790,7 +790,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDb-6d-9C7">
-                                <rect key="frame" x="289" y="177" width="100" height="22"/>
+                                <rect key="frame" x="390" y="204" width="200" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="新工程名" drawsBackground="YES" id="iDg-cI-U19">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -801,7 +801,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-5z-6W6">
-                                <rect key="frame" x="43" y="292" width="108" height="17"/>
+                                <rect key="frame" x="43" y="282" width="108" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="project文件路径:" id="Cqe-Oi-C5t">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -809,31 +809,15 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DVI-vm-8Fw">
-                                <rect key="frame" x="43" y="253" width="124" height="17"/>
+                                <rect key="frame" x="43" y="243" width="124" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="垃圾代码输出路径：" id="N83-vO-h22">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Fg-iQ-utH">
-                                <rect key="frame" x="43" y="216" width="97" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="忽略文件路径：" id="ONM-EW-UJE">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-nb-LaK">
-                                <rect key="frame" x="165" y="214" width="425" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="忽略文件目录，以逗号隔开" drawsBackground="YES" id="SBJ-r3-yDM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pra-xe-2f9">
-                                <rect key="frame" x="151" y="329" width="366" height="17"/>
+                                <rect key="frame" x="151" y="319" width="366" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YPY-Sf-MfP">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -841,7 +825,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" tag="101" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-JC-ogf">
-                                <rect key="frame" x="529" y="320" width="67" height="32"/>
+                                <rect key="frame" x="529" y="310" width="67" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="3xD-Nm-UFt"/>
                                     <constraint firstAttribute="height" constant="21" id="ZH0-1M-TVH"/>
@@ -855,7 +839,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N3R-Jt-W43">
-                                <rect key="frame" x="157" y="292" width="370" height="17"/>
+                                <rect key="frame" x="157" y="282" width="370" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="mJw-xZ-tJM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -863,7 +847,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="dMk-dx-Ont">
-                                <rect key="frame" x="529" y="283" width="67" height="32"/>
+                                <rect key="frame" x="529" y="273" width="67" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="15K-6g-YtJ"/>
                                 </constraints>
@@ -876,7 +860,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" tag="103" translatesAutoresizingMaskIntoConstraints="NO" id="ADl-wU-Ayh">
-                                <rect key="frame" x="529" y="244" width="67" height="32"/>
+                                <rect key="frame" x="529" y="234" width="67" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="Yhv-9m-deu"/>
                                 </constraints>
@@ -889,7 +873,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vGC-qv-6Pf">
-                                <rect key="frame" x="173" y="253" width="354" height="17"/>
+                                <rect key="frame" x="173" y="243" width="354" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="TSP-ES-t5G">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -903,19 +887,37 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="FVQ-jD-FVP">
+                                <rect key="frame" x="43" y="132" width="84" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="忽略文件目录" id="PKt-vw-DFv">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-nb-LaK">
+                                <rect key="frame" x="153" y="130" width="437" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="用于修改前缀,删除注释，以逗号隔开" drawsBackground="YES" id="SBJ-r3-yDM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Le4-fr-MXW" firstAttribute="leading" secondItem="FVQ-jD-FVP" secondAttribute="leading" id="0kc-9W-D94"/>
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="centerY" secondItem="soS-8R-ORP" secondAttribute="centerY" id="1ID-qf-R65"/>
                             <constraint firstItem="0fq-JC-ogf" firstAttribute="centerY" secondItem="fxg-To-mLx" secondAttribute="centerY" id="1lA-vW-8Ps"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="width" secondItem="w9N-ie-4P1" secondAttribute="width" id="2ec-p5-qiz"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="leading" secondItem="w9N-ie-4P1" secondAttribute="trailing" constant="37" id="2lh-cC-C0W"/>
                             <constraint firstAttribute="trailing" secondItem="ADl-wU-Ayh" secondAttribute="trailing" constant="30" id="2nW-IH-4tJ"/>
-                            <constraint firstAttribute="trailing" secondItem="q1f-nb-LaK" secondAttribute="trailing" constant="30" id="2zp-tZ-mzI"/>
                             <constraint firstItem="dMk-dx-Ont" firstAttribute="leading" secondItem="N3R-Jt-W43" secondAttribute="trailing" constant="10" id="5Dl-Vl-Vby"/>
+                            <constraint firstAttribute="trailing" secondItem="sVI-dU-zpV" secondAttribute="trailing" constant="30" id="5co-Rz-ksd"/>
                             <constraint firstItem="fxg-To-mLx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="45" id="5he-kI-gV1"/>
                             <constraint firstItem="DVI-vm-8Fw" firstAttribute="leading" secondItem="wBb-5z-6W6" secondAttribute="leading" id="7wP-qi-y7p"/>
                             <constraint firstItem="N3R-Jt-W43" firstAttribute="leading" secondItem="wBb-5z-6W6" secondAttribute="trailing" constant="10" id="9iO-8H-3Zh"/>
                             <constraint firstItem="8hX-eQ-ggr" firstAttribute="top" secondItem="Yzj-NI-U5A" secondAttribute="bottom" constant="50" id="BBI-tU-yRc"/>
+                            <constraint firstItem="FVQ-jD-FVP" firstAttribute="top" secondItem="soS-8R-ORP" secondAttribute="bottom" constant="20" id="D18-OA-aSx"/>
                             <constraint firstItem="Pra-xe-2f9" firstAttribute="centerY" secondItem="fxg-To-mLx" secondAttribute="centerY" id="DM1-Ch-BWF"/>
                             <constraint firstItem="wBb-5z-6W6" firstAttribute="top" secondItem="fxg-To-mLx" secondAttribute="bottom" constant="20" id="Dqp-iQ-1hY"/>
                             <constraint firstItem="ADl-wU-Ayh" firstAttribute="leading" secondItem="vGC-qv-6Pf" secondAttribute="trailing" constant="10" id="E9J-Gg-tMW"/>
@@ -923,41 +925,42 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0gq-na-bsU" secondAttribute="trailing" constant="20" symbolic="YES" id="HJM-hc-94a"/>
                             <constraint firstItem="vGC-qv-6Pf" firstAttribute="leading" secondItem="DVI-vm-8Fw" secondAttribute="trailing" constant="10" id="HNO-0w-ekF"/>
                             <constraint firstItem="soS-8R-ORP" firstAttribute="top" secondItem="0gq-na-bsU" secondAttribute="bottom" constant="20" id="IeH-VL-OHR"/>
+                            <constraint firstItem="q1f-nb-LaK" firstAttribute="centerY" secondItem="FVQ-jD-FVP" secondAttribute="centerY" id="IkR-Wk-WCR"/>
                             <constraint firstItem="Pra-xe-2f9" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="trailing" constant="50" id="JHD-pc-Mba"/>
                             <constraint firstItem="Yzj-NI-U5A" firstAttribute="leading" secondItem="Le4-fr-MXW" secondAttribute="trailing" constant="40" id="Jdp-sB-kfK"/>
-                            <constraint firstItem="4Fg-iQ-utH" firstAttribute="leading" secondItem="wBb-5z-6W6" secondAttribute="leading" id="JzZ-RC-cxq"/>
                             <constraint firstItem="N3R-Jt-W43" firstAttribute="centerY" secondItem="wBb-5z-6W6" secondAttribute="centerY" id="M8i-1l-Zwm"/>
                             <constraint firstItem="fxg-To-mLx" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="MIO-Tj-X8j"/>
                             <constraint firstItem="0fq-JC-ogf" firstAttribute="leading" secondItem="Pra-xe-2f9" secondAttribute="trailing" constant="20" id="P8y-em-mFg"/>
-                            <constraint firstItem="0gq-na-bsU" firstAttribute="top" secondItem="4Fg-iQ-utH" secondAttribute="bottom" constant="20" id="PuI-px-hBm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="soS-8R-ORP" secondAttribute="trailing" constant="20" symbolic="YES" id="Qg2-fj-o6f"/>
                             <constraint firstAttribute="trailing" secondItem="dMk-dx-Ont" secondAttribute="trailing" constant="30" id="Ufx-9P-n65"/>
                             <constraint firstItem="Le4-fr-MXW" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="Vo9-uy-oph"/>
                             <constraint firstItem="8hX-eQ-ggr" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="WgI-i2-Oam"/>
                             <constraint firstItem="dMk-dx-Ont" firstAttribute="centerY" secondItem="wBb-5z-6W6" secondAttribute="centerY" id="Wgq-C3-gbr"/>
+                            <constraint firstItem="0gq-na-bsU" firstAttribute="top" secondItem="DVI-vm-8Fw" secondAttribute="bottom" constant="20" id="X0x-64-C85"/>
                             <constraint firstItem="3Ve-RY-9EV" firstAttribute="centerY" secondItem="soS-8R-ORP" secondAttribute="centerY" id="XlQ-J2-rzJ"/>
                             <constraint firstItem="w9N-ie-4P1" firstAttribute="leading" secondItem="0gq-na-bsU" secondAttribute="trailing" constant="40" id="Y1L-da-Ne9"/>
+                            <constraint firstItem="q1f-nb-LaK" firstAttribute="leading" secondItem="FVQ-jD-FVP" secondAttribute="trailing" constant="28" id="Z3L-ns-kIF"/>
+                            <constraint firstAttribute="trailing" secondItem="q1f-nb-LaK" secondAttribute="trailing" constant="30" id="ZPQ-Ja-eWu"/>
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="leading" secondItem="3Ve-RY-9EV" secondAttribute="trailing" constant="37" id="bA5-cP-RiH"/>
-                            <constraint firstItem="Le4-fr-MXW" firstAttribute="top" secondItem="soS-8R-ORP" secondAttribute="bottom" constant="30" id="bXB-9P-QpR"/>
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="width" secondItem="3Ve-RY-9EV" secondAttribute="width" id="c30-Id-Jvy"/>
                             <constraint firstItem="ADl-wU-Ayh" firstAttribute="centerY" secondItem="DVI-vm-8Fw" secondAttribute="centerY" id="cUa-26-gLQ"/>
-                            <constraint firstItem="q1f-nb-LaK" firstAttribute="leading" secondItem="4Fg-iQ-utH" secondAttribute="trailing" constant="27" id="ce8-98-jOh"/>
                             <constraint firstItem="3Ve-RY-9EV" firstAttribute="leading" secondItem="soS-8R-ORP" secondAttribute="trailing" constant="40" id="dxD-Ti-e9p"/>
                             <constraint firstItem="Yzj-NI-U5A" firstAttribute="centerY" secondItem="Le4-fr-MXW" secondAttribute="centerY" id="e0R-g6-F5G"/>
                             <constraint firstItem="DVI-vm-8Fw" firstAttribute="top" secondItem="wBb-5z-6W6" secondAttribute="bottom" constant="22" id="gTq-nU-Ih5"/>
+                            <constraint firstItem="Le4-fr-MXW" firstAttribute="top" secondItem="FVQ-jD-FVP" secondAttribute="bottom" constant="20" id="giF-Ee-A6G"/>
                             <constraint firstAttribute="bottom" secondItem="8hX-eQ-ggr" secondAttribute="bottom" constant="30" id="iPo-2v-mey"/>
                             <constraint firstItem="0gq-na-bsU" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="j4s-uX-N6s"/>
                             <constraint firstItem="soS-8R-ORP" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="jT5-Gw-GU4"/>
-                            <constraint firstItem="4Fg-iQ-utH" firstAttribute="top" secondItem="DVI-vm-8Fw" secondAttribute="bottom" constant="20" id="mhh-ln-f2Y"/>
                             <constraint firstItem="vGC-qv-6Pf" firstAttribute="centerY" secondItem="DVI-vm-8Fw" secondAttribute="centerY" id="pWI-em-UZY"/>
+                            <constraint firstAttribute="trailing" secondItem="nDb-6d-9C7" secondAttribute="trailing" constant="30" id="rL2-iq-UHh"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="centerY" secondItem="w9N-ie-4P1" secondAttribute="centerY" id="t0V-1E-1Sn"/>
-                            <constraint firstItem="q1f-nb-LaK" firstAttribute="centerY" secondItem="4Fg-iQ-utH" secondAttribute="centerY" id="v81-UJ-SW4"/>
                             <constraint firstItem="wBb-5z-6W6" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="zYj-ug-2eO"/>
                             <constraint firstAttribute="trailing" secondItem="0fq-JC-ogf" secondAttribute="trailing" constant="30" id="zrU-Pf-Pqq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="changedProjectNameTF" destination="nDb-6d-9C7" id="82b-XU-O1S"/>
+                        <outlet property="ignoreFilesTF" destination="q1f-nb-LaK" id="U6z-8Y-LjK"/>
                         <outlet property="modifyResourceBtn" destination="Le4-fr-MXW" id="HFY-je-O2y"/>
                         <outlet property="oldProjectNameTF" destination="w9N-ie-4P1" id="aEs-7p-BIy"/>
                         <outlet property="outgarbageCodePathTF" destination="vGC-qv-6Pf" id="1T0-C0-QXv"/>
@@ -970,7 +973,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="654.5"/>
         </scene>
     </scenes>
 </document>

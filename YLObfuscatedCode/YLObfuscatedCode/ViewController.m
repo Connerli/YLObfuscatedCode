@@ -61,6 +61,10 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
  删除注释
  */
 @property (weak) IBOutlet NSButton *removeCommentsBtn;
+/**
+ 忽略文件
+ */
+@property (weak) IBOutlet NSTextField *ignoreFilesTF;
 //工程路径
 @property (nonatomic, copy) NSString *projectPath;
 //工程文件路径
@@ -79,7 +83,8 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
 @property (nonatomic, copy) NSString *outGarbageCodePath;
 //忽略文件目录
 @property (nonatomic, copy) NSArray *ignoreDirNames;
-
+//弹框
+@property (nonatomic, strong) NSAlert *alert;
 @end
 
 static NSString *const kHClassFileTemplate = @"\
@@ -102,6 +107,7 @@ print(%@)\n\
 }\n";
 static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 @implementation ViewController
+//选择文件
 - (IBAction)selectFile:(NSButton *)sender {
     NSOpenPanel* panel = [NSOpenPanel openPanel];
     __weak typeof(self)weakSelf = self;
@@ -153,18 +159,31 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     self.projectFilePath = self.projecgtFilePathTF.stringValue;
     self.prefixOld = self.prefixOldTF.stringValue;
     self.prefixNew = self.prefixNewTF.stringValue;
-    
+    self.ignoreDirNames = [self.ignoreFilesTF.stringValue componentsSeparatedByString:@","];
     BOOL isModifyResource = self.modifyResourceBtn.state;
     BOOL isRemoveComments = self.removeCommentsBtn.state;
+    
+    
+    //校验文件路径是否为空
+    if ([NSString checkStringEmpty:self.projectPath]) {
+        [self alertWithMessage:@"工程目录不能为空"];
+        return;
+    }
+    if ([NSString checkStringEmpty:self.projectFilePath]) {
+        [self alertWithMessage:@"工程文件地址不能为空"];
+        return;
+    }
     //检测项目目录是否存在
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDirectory = NO;
     if (![fm fileExistsAtPath:self.projectPath isDirectory:&isDirectory]) {
         NSLog(@"%@不存在", self.projectPath);
+        [self alertWithMessage:[self.projectPath stringByAppendingString:@"不存在"]];
         return;
     }
     if (!isDirectory) {
         NSLog(@"%@不是目录", self.projectPath);
+        [self alertWithMessage:[self.projectPath stringByAppendingString:@"不是目录"]];
         return;
     }
     //修改项目名
@@ -176,7 +195,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         NSLog(@"修改工程名完成");
     }
     //修改类前缀
-    if (![NSString checkStringEmpty:self.prefixOld] && ![NSString checkStringEmpty:self.prefixNew]) {
+    if (![NSString checkStringEmpty:self.prefixNew]) {
         @autoreleasepool {
             // 打开工程文件
             NSError *error = nil;
@@ -229,14 +248,21 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         }];
         NSLog(@"生成垃圾代码完成");
     }
+    [self alertWithMessage:@"操作完成"];
 }
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.alert = [[NSAlert alloc] init];
+}
+- (void)alertWithMessage:(NSString *)message {
+    self.alert.messageText = message;
+    [self.alert beginSheetModalForWindow:[self.view window] completionHandler:^(NSModalResponse returnCode) {
+        
+    }];
     
 }
-
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
     
