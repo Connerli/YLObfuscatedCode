@@ -36,7 +36,10 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
  垃圾代码输出目录
  */
 @property (weak) IBOutlet NSTextField *outgarbageCodePathTF;
-
+/**
+ 是否修改项目名
+ */
+@property (weak) IBOutlet NSButton *changeProjectNameBtn;
 /**
  原项目名
  */
@@ -45,6 +48,10 @@ typedef NS_ENUM(NSInteger, GSCSourceType) {
  修改后的项目名
  */
 @property (weak) IBOutlet NSTextField *changedProjectNameTF;
+/**
+ 是否修改前缀按钮
+ */
+@property (weak) IBOutlet NSButton *changePrefixBtn;
 /**
  原前缀
  */
@@ -162,7 +169,8 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     self.ignoreDirNames = [self.ignoreFilesTF.stringValue componentsSeparatedByString:@","];
     BOOL isModifyResource = self.modifyResourceBtn.state;
     BOOL isRemoveComments = self.removeCommentsBtn.state;
-    
+    BOOL isChangeProjectName = self.changeProjectNameBtn.state;
+    BOOL isChangePrefix = self.changePrefixBtn.state;
     
     //校验文件路径是否为空
     if ([NSString checkStringEmpty:self.projectPath]) {
@@ -187,7 +195,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         return;
     }
     //修改项目名
-    if (![NSString checkStringEmpty:self.projectOldName] && ![NSString checkStringEmpty:self.projectNewName]) {
+    if (isChangeProjectName &&![NSString checkStringEmpty:self.projectOldName] && ![NSString checkStringEmpty:self.projectNewName]) {
         @autoreleasepool {
             NSString *dir = self.projectPath;
             [self modifyProjectNameWithProjectDir:dir oldName:self.projectOldName newName:self.projectNewName];
@@ -195,7 +203,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         NSLog(@"修改工程名完成");
     }
     //修改类前缀
-    if (![NSString checkStringEmpty:self.prefixNew]) {
+    if (isChangePrefix) {
         @autoreleasepool {
             // 打开工程文件
             NSError *error = nil;
@@ -206,7 +214,8 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
                 return;
             }
             [self modifyClassNamePrefixWithProjectContent:projectContent sourceCodeDir:self.projectPath ignoreDirNames:self.ignoreDirNames oldName:self.prefixOld newName:self.prefixNew];
-            [projectContent writeToFile:self.projectPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            
+            [projectContent writeToFile:projectFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
         }
         NSLog(@"修改类名前缀完成");
     }
@@ -727,7 +736,9 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
         if ([fileName hasPrefix:oldName]) {
             newClassName = [newName stringByAppendingString:[fileName substringFromIndex:oldName.length]];
         } else {
-            newClassName = [newName stringByAppendingString:fileName];
+            //如果没有前缀则不修改
+//            newClassName = [newName stringByAppendingString:fileName];
+            continue;
         }
         
         // 文件名 Const.ext > DDConst.ext
