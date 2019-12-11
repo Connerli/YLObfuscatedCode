@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -619,7 +620,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -684,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -706,11 +707,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="620" height="356"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="382"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-To-mLx">
-                                <rect key="frame" x="43" y="319" width="62" height="17"/>
+                                <rect key="frame" x="43" y="346" width="62" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="工程目录:" id="Lt2-1s-w1a">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -718,13 +719,13 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w9N-ie-4P1">
-                                <rect key="frame" x="152" y="205" width="201" height="22"/>
+                                <rect key="frame" x="152" y="205" width="201" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5pb-2r-bao"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="原工程名" drawsBackground="YES" id="keF-et-L6v">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
@@ -732,13 +733,13 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-RY-9EV">
-                                <rect key="frame" x="152" y="168" width="201" height="22"/>
+                                <rect key="frame" x="152" y="168" width="201" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="t6k-7e-zmg"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="原前缀" drawsBackground="YES" id="bhX-Jh-GnD">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
@@ -746,10 +747,10 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVI-dU-zpV">
-                                <rect key="frame" x="390" y="168" width="200" height="22"/>
+                                <rect key="frame" x="390" y="168" width="200" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="新前缀" drawsBackground="YES" id="lck-dD-SIq">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
@@ -758,7 +759,7 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Le4-fr-MXW">
                                 <rect key="frame" x="43" y="96" width="142" height="18"/>
-                                <buttonCell key="cell" type="check" title="修改图片资源文件名" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FHz-B5-9O9">
+                                <buttonCell key="cell" type="check" title="修改图片资源文件名" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FHz-B5-9O9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -774,10 +775,10 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDb-6d-9C7">
-                                <rect key="frame" x="390" y="205" width="200" height="22"/>
+                                <rect key="frame" x="390" y="205" width="200" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="新工程名" drawsBackground="YES" id="iDg-cI-U19">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
@@ -785,7 +786,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wBb-5z-6W6">
-                                <rect key="frame" x="43" y="282" width="108" height="17"/>
+                                <rect key="frame" x="43" y="310" width="108" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="project文件路径:" id="Cqe-Oi-C5t">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -793,7 +794,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DVI-vm-8Fw">
-                                <rect key="frame" x="43" y="243" width="124" height="17"/>
+                                <rect key="frame" x="43" y="272" width="124" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="垃圾代码输出路径：" id="N83-vO-h22">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -801,17 +802,19 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pra-xe-2f9">
-                                <rect key="frame" x="151" y="319" width="366" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YPY-Sf-MfP">
+                                <rect key="frame" x="151" y="346" width="376" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="r6b-me-Syq"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="请选择工程目录" id="YPY-Sf-MfP">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" tag="101" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-JC-ogf">
-                                <rect key="frame" x="529" y="310" width="67" height="32"/>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" tag="101" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-JC-ogf">
+                                <rect key="frame" x="529" y="337" width="67" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="3xD-Nm-UFt"/>
                                     <constraint firstAttribute="height" constant="21" id="ZH0-1M-TVH"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="etO-I3-FBR">
@@ -823,18 +826,15 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N3R-Jt-W43">
-                                <rect key="frame" x="157" y="282" width="370" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="mJw-xZ-tJM">
+                                <rect key="frame" x="157" y="310" width="370" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="请选择poject文件路径" id="mJw-xZ-tJM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="dMk-dx-Ont">
-                                <rect key="frame" x="529" y="273" width="67" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="15K-6g-YtJ"/>
-                                </constraints>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="dMk-dx-Ont">
+                                <rect key="frame" x="529" y="301" width="67" height="32"/>
                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JOZ-Jk-aqQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -843,11 +843,8 @@
                                     <action selector="selectFile:" target="XfG-lQ-9wD" id="MaU-qy-PSL"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" tag="103" translatesAutoresizingMaskIntoConstraints="NO" id="ADl-wU-Ayh">
-                                <rect key="frame" x="529" y="234" width="67" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="Yhv-9m-deu"/>
-                                </constraints>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="103" translatesAutoresizingMaskIntoConstraints="NO" id="ADl-wU-Ayh">
+                                <rect key="frame" x="529" y="263" width="67" height="32"/>
                                 <buttonCell key="cell" type="push" title="选择" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8DW-hp-RRi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -857,8 +854,8 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vGC-qv-6Pf">
-                                <rect key="frame" x="173" y="243" width="354" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="TSP-ES-t5G">
+                                <rect key="frame" x="173" y="272" width="354" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="垃圾代码路径" id="TSP-ES-t5G">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -866,13 +863,13 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-NI-U5A">
                                 <rect key="frame" x="221" y="96" width="195" height="18"/>
-                                <buttonCell key="cell" type="check" title="删除代码中的所有注释和空行" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aHr-oJ-ePE">
+                                <buttonCell key="cell" type="check" title="删除代码中的所有注释和空行" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aHr-oJ-ePE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="FVQ-jD-FVP">
-                                <rect key="frame" x="43" y="132" width="84" height="17"/>
+                                <rect key="frame" x="43" y="132" width="84" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="忽略文件目录" id="PKt-vw-DFv">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -880,27 +877,35 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-nb-LaK">
-                                <rect key="frame" x="153" y="130" width="437" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="用于修改前缀,删除注释，以逗号隔开" drawsBackground="YES" id="SBJ-r3-yDM">
+                                <rect key="frame" x="153" y="130" width="437" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="用于忽略修改类名前缀,删除注释目录，以逗号隔开。" drawsBackground="YES" id="SBJ-r3-yDM">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-BK-F0h">
-                                <rect key="frame" x="43" y="170" width="102" height="18"/>
+                                <rect key="frame" x="43" y="169" width="102" height="18"/>
                                 <buttonCell key="cell" type="check" title="修改类名前缀" bezelStyle="regularSquare" imagePosition="left" inset="2" id="dZa-54-kbQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9wP-Zx-SOP">
-                                <rect key="frame" x="43" y="207" width="89" height="18"/>
+                                <rect key="frame" x="43" y="206" width="89" height="18"/>
                                 <buttonCell key="cell" type="check" title="修改工程名" bezelStyle="regularSquare" imagePosition="left" inset="2" id="62O-Lq-djT">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1uV-57-eFt">
+                                <rect key="frame" x="43" y="242" width="442" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="提示：请不要既修改工程名，同时修改类名前缀，会导致找不到工程文件。" id="JeH-nF-05D">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="systemBrownColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Le4-fr-MXW" firstAttribute="leading" secondItem="FVQ-jD-FVP" secondAttribute="leading" id="0kc-9W-D94"/>
@@ -925,11 +930,11 @@
                             <constraint firstItem="3nn-BK-F0h" firstAttribute="top" secondItem="9wP-Zx-SOP" secondAttribute="bottom" constant="23" id="IjG-ze-eVK"/>
                             <constraint firstItem="q1f-nb-LaK" firstAttribute="centerY" secondItem="FVQ-jD-FVP" secondAttribute="centerY" id="IkR-Wk-WCR"/>
                             <constraint firstItem="Pra-xe-2f9" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="trailing" constant="50" id="JHD-pc-Mba"/>
-                            <constraint firstItem="Yzj-NI-U5A" firstAttribute="leading" secondItem="Le4-fr-MXW" secondAttribute="trailing" constant="40" id="Jdp-sB-kfK"/>
-                            <constraint firstItem="9wP-Zx-SOP" firstAttribute="top" secondItem="DVI-vm-8Fw" secondAttribute="bottom" constant="20" id="KW4-m3-3dg"/>
+                            <constraint firstItem="Yzj-NI-U5A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Le4-fr-MXW" secondAttribute="trailing" constant="8" symbolic="YES" id="Jdp-sB-kfK"/>
                             <constraint firstItem="N3R-Jt-W43" firstAttribute="centerY" secondItem="wBb-5z-6W6" secondAttribute="centerY" id="M8i-1l-Zwm"/>
                             <constraint firstItem="fxg-To-mLx" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="MIO-Tj-X8j"/>
-                            <constraint firstItem="0fq-JC-ogf" firstAttribute="leading" secondItem="Pra-xe-2f9" secondAttribute="trailing" constant="20" id="P8y-em-mFg"/>
+                            <constraint firstItem="1uV-57-eFt" firstAttribute="top" secondItem="DVI-vm-8Fw" secondAttribute="bottom" constant="14" id="MX9-tS-tqJ"/>
+                            <constraint firstItem="0fq-JC-ogf" firstAttribute="leading" secondItem="Pra-xe-2f9" secondAttribute="trailing" constant="10" id="P8y-em-mFg"/>
                             <constraint firstAttribute="trailing" secondItem="dMk-dx-Ont" secondAttribute="trailing" constant="30" id="Ufx-9P-n65"/>
                             <constraint firstItem="Le4-fr-MXW" firstAttribute="leading" secondItem="fxg-To-mLx" secondAttribute="leading" id="Vo9-uy-oph"/>
                             <constraint firstItem="8hX-eQ-ggr" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="WgI-i2-Oam"/>
@@ -941,12 +946,16 @@
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="width" secondItem="3Ve-RY-9EV" secondAttribute="width" id="c30-Id-Jvy"/>
                             <constraint firstItem="3nn-BK-F0h" firstAttribute="leading" secondItem="DVI-vm-8Fw" secondAttribute="leading" id="cNb-9M-3aB"/>
                             <constraint firstItem="ADl-wU-Ayh" firstAttribute="centerY" secondItem="DVI-vm-8Fw" secondAttribute="centerY" id="cUa-26-gLQ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1uV-57-eFt" secondAttribute="trailing" constant="20" symbolic="YES" id="cd1-9x-Dvc"/>
                             <constraint firstItem="Yzj-NI-U5A" firstAttribute="centerY" secondItem="Le4-fr-MXW" secondAttribute="centerY" id="e0R-g6-F5G"/>
+                            <constraint firstItem="1uV-57-eFt" firstAttribute="leading" secondItem="DVI-vm-8Fw" secondAttribute="leading" id="fdK-LP-hCc"/>
                             <constraint firstItem="DVI-vm-8Fw" firstAttribute="top" secondItem="wBb-5z-6W6" secondAttribute="bottom" constant="22" id="gTq-nU-Ih5"/>
                             <constraint firstItem="Le4-fr-MXW" firstAttribute="top" secondItem="FVQ-jD-FVP" secondAttribute="bottom" constant="20" id="giF-Ee-A6G"/>
+                            <constraint firstAttribute="trailing" secondItem="Yzj-NI-U5A" secondAttribute="trailing" constant="206" id="hF2-gF-iZJ"/>
                             <constraint firstItem="w9N-ie-4P1" firstAttribute="centerY" secondItem="9wP-Zx-SOP" secondAttribute="centerY" id="ht1-Nc-MEt"/>
                             <constraint firstAttribute="bottom" secondItem="8hX-eQ-ggr" secondAttribute="bottom" constant="30" id="iPo-2v-mey"/>
                             <constraint firstItem="sVI-dU-zpV" firstAttribute="centerY" secondItem="3nn-BK-F0h" secondAttribute="centerY" id="jlp-M3-66n"/>
+                            <constraint firstItem="9wP-Zx-SOP" firstAttribute="top" secondItem="1uV-57-eFt" secondAttribute="bottom" constant="20" id="lWK-KL-omv"/>
                             <constraint firstItem="vGC-qv-6Pf" firstAttribute="centerY" secondItem="DVI-vm-8Fw" secondAttribute="centerY" id="pWI-em-UZY"/>
                             <constraint firstAttribute="trailing" secondItem="nDb-6d-9C7" secondAttribute="trailing" constant="30" id="rL2-iq-UHh"/>
                             <constraint firstItem="nDb-6d-9C7" firstAttribute="centerY" secondItem="9wP-Zx-SOP" secondAttribute="centerY" id="yfH-rY-cPS"/>

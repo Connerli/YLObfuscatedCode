@@ -101,7 +101,7 @@
 		13262A772122A2DC00C7E663 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Conner;
 				TargetAttributes = {
 					13262A7E2122A2DC00C7E663 = {
@@ -287,6 +287,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 49ENPVW3M9;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = YLObfuscatedCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,6 +307,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 49ENPVW3M9;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = YLObfuscatedCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

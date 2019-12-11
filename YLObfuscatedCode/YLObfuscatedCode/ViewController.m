@@ -167,6 +167,7 @@ static const NSString *kRandomAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJK
     self.prefixOld = self.prefixOldTF.stringValue;
     self.prefixNew = self.prefixNewTF.stringValue;
     self.ignoreDirNames = [self.ignoreFilesTF.stringValue componentsSeparatedByString:@","];
+    self.outGarbageCodePath = self.outgarbageCodePathTF.stringValue;
     BOOL isModifyResource = self.modifyResourceBtn.state;
     BOOL isRemoveComments = self.removeCommentsBtn.state;
     BOOL isChangeProjectName = self.changeProjectNameBtn.state;
